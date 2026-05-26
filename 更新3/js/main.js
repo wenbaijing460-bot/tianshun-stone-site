@@ -187,11 +187,14 @@
         var tid = route.scrollTarget;
         var needsTrackSettle =
           (fromPanelIdx >= 0 && fromPanelIdx !== idx) || (fromPanelIdx < 0 && idx > 0);
-        afterPanelPositionSettled(track, needsTrackSettle, function () {
+        var runTargetScroll = function () {
           if (routeApplyGen !== scrollRouteGen) return;
           var el = scroller.querySelector("#" + tid);
           scrollElementToTopOfScroller(scroller, el);
-        });
+        };
+        afterPanelPositionSettled(track, needsTrackSettle, runTargetScroll);
+        window.setTimeout(runTargetScroll, 120);
+        window.setTimeout(runTargetScroll, 360);
       } else if (route.scrollTop) {
         scroller.scrollTop = 0;
       }
