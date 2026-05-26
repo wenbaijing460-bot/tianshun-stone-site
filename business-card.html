@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>天顺石业名片</title>
+    <style>
+      :root {
+        --ink: #1a1713;
+        --muted: #6f675d;
+        --gold: #9a7430;
+        --paper: #f8f4ea;
+        --line: rgba(26, 23, 19, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #ded9cf;
+        color: var(--ink);
+        font-family: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+      }
+
+      .sheet {
+        padding: 28px;
+      }
+
+      .card {
+        width: 90mm;
+        height: 54mm;
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        background:
+          linear-gradient(120deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.12)),
+          radial-gradient(circle at 12% 10%, rgba(154, 116, 48, 0.18), transparent 28%),
+          linear-gradient(135deg, #fbf7ee 0%, #ebe2d2 47%, #d8cfbe 100%);
+        box-shadow: 0 22px 60px rgba(40, 32, 22, 0.2);
+        border: 1px solid rgba(154, 116, 48, 0.28);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(110deg, transparent 0 54%, rgba(26, 23, 19, 0.86) 54.2% 100%),
+          repeating-linear-gradient(100deg, rgba(154, 116, 48, 0.08) 0 1px, transparent 1px 13px);
+        pointer-events: none;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 23mm;
+        gap: 4mm;
+        padding: 6mm;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 2.5mm;
+        margin-bottom: 2.2mm;
+      }
+
+      .brand-mark {
+        font-family: "STKaiti", "KaiTi", serif;
+        color: var(--gold);
+        font-size: 18pt;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-name {
+        color: var(--muted);
+        font-size: 10pt;
+        letter-spacing: 0.12em;
+      }
+
+      .person {
+        font-family: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+        font-size: 15pt;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        margin: 0 0 1.8mm;
+      }
+
+      .person::before {
+        content: "联系人";
+        display: block;
+        margin-bottom: 1.4mm;
+        color: var(--gold);
+        font-size: 5.8pt;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+      }
+
+      .role {
+        margin: 0 0 2mm;
+        color: var(--gold);
+        font-size: 6.4pt;
+        letter-spacing: 0.1em;
+      }
+
+      .info {
+        display: grid;
+        gap: 0.9mm;
+        font-size: 5.8pt;
+        line-height: 1.26;
+        color: #38332d;
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: 7.5mm 1fr;
+        gap: 1.4mm;
+      }
+
+      .label {
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      .qr-zone {
+        align-self: center;
+        justify-self: end;
+        width: 23mm;
+        color: #f8f4ea;
+        text-align: center;
+      }
+
+      .qr-box {
+        width: 22mm;
+        height: 22mm;
+        padding: 1.4mm;
+        background: #fffaf0;
+        border-radius: 4px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+      }
+
+      .qr-box img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .qr-caption {
+        margin-top: 2.2mm;
+        font-size: 6.2pt;
+        letter-spacing: 0.18em;
+        color: rgba(248, 244, 234, 0.82);
+      }
+
+      .print-note {
+        margin: 14px 0 0;
+        text-align: center;
+        color: #756c61;
+        font-size: 13px;
+      }
+
+      body.export {
+        min-height: 54mm;
+        background: transparent;
+      }
+
+      body.export .sheet {
+        padding: 0;
+      }
+
+      body.export .card {
+        box-shadow: none;
+      }
+
+      body.export .print-note {
+        display: none;
+      }
+
+      @page {
+        size: 90mm 54mm;
+        margin: 0;
+      }
+
+      @media print {
+        body {
+          min-height: auto;
+          background: transparent;
+        }
+
+        .sheet {
+          padding: 0;
+        }
+
+        .card {
+          box-shadow: none;
+          border-radius: 0;
+        }
+
+        .print-note {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <section class="card" aria-label="天顺石业名片">
+        <div class="content">
+          <div>
+            <div class="brand">
+              <span class="brand-mark">天顺</span>
+              <span class="brand-name">石业有限公司</span>
+            </div>
+            <h1 class="person">文永超</h1>
+            <p class="role">石材供应 · 加工协同 · 工程配合</p>
+            <div class="info">
+              <div class="info-row">
+                <span class="label">电话</span>
+                <span>138 8823 3263</span>
+              </div>
+              <div class="info-row">
+                <span class="label">地址</span>
+                <span>云南省昆明市安宁市鹏泰建材市场</span>
+              </div>
+            </div>
+          </div>
+          <aside class="qr-zone">
+            <div class="qr-box">
+              <img src="assets/card/website-qr.png" alt="天顺石业官网二维码" />
+            </div>
+            <div class="qr-caption">扫码浏览官网</div>
+          </aside>
+        </div>
+      </section>
+      <p class="print-note">名片尺寸 90mm x 54mm，可直接打印或截图发送。</p>
+    </main>
+    <script>
+      if (new URLSearchParams(location.search).has("export")) {
+        document.body.classList.add("export");
+      }
+    </script>
+  </body>
+</html>
